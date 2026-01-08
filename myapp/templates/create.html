@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body{
+        
+        background-color: aquamarine;
+    }
+</style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h3 class="mb-4 text-primary">PIHU HOTEL & CANTEEN</h3>
+    </div>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="INPtags w-75 d-grid row g-3  ">
+            <div class="mb-3 col-md-6">
+                <label for="name">Name :</label>
+                <input type="text" name="name" value="{{ User.name }}">
+            </div>
+            <div class="mb-3 h-50 col-md-6">
+                <label for="advance">Advance :</label>
+                <input type="text" name="advance" value="{{ User.advance }}">
+            </div>
+        
+            <div class="mb-3 col-md-6">
+                <label for="location">Location :</label>
+                <input type="text" name="location" value="{{ User.location }}"><br>
+            </div>
+        
+            <div class="mb-3 col-md-6">
+                <label for="date">Date</label>
+                <input type="date" name="date" value="{{ User.date }}"><br>   
+            </div>
+
+            <div class="mb-3 col-md-6">
+                <label for="lunch">Lunch :</label>
+                <input type="text" name="lunch" value="{{ User.lunch }}"><br>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="dinner">Dinner :</label>
+                <input type="text" name="dinner" value="{{ User.dinner }}"><br>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="extra_meals">Extra_Meals :</label>
+                <input type="text" name="extra_meals" value="{{ User.extra_meals }}"><br>
+            </div>
+
+    </div>
+
+        <input type="submit" value="Submit">
+    </form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
