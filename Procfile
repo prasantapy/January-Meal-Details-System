@@ -1,1 +1,1 @@
-web: gunicorn JanuaryDetails_of_Meals.wsgi
+web: gunicorn JanuaryDetails_of_Meals.wsgi:application
