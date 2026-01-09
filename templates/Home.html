@@ -1,21 +1,166 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIHU Hotel </title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body{
+        background-color: lightseagreen;
+    }
+    .card-img-custom {
+    width: 250px;   
+    height: 250px;  
+    object-fit: cover; 
+    margin: 5px;
+    }
+</style>
 </head>
 <body>
-    <div>
-        <h2> Hello Home pages </h2>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#">Phiu Hotel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'show' %}">Read Table Data</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'create' %}">Create Data</a>
+        </li>
+        </ul>
     </div>
-    
-    <div>
-        <nav>
-            <a href="{% url 'show' %}">Read Table Data</a><br>
-            <a href="{% url 'create' %}">Create Data</a><br> 
-        </nav>
-        
     </div>
+</nav>
+    <div>
+       <div class="container my-5">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">FOOD MENU</h2>
+        <h5>PIHU HOTEL & CANTEEN</h5>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- MEALS -->
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="badge bg-danger mb-3">MEALS</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Veg Thali <span class="float-end">₹60</span></li>
+                        <li class="list-group-item">Egg Thali <span class="float-end">₹70</span></li>
+                        <li class="list-group-item">Fish Thali <span class="float-end">₹70</span></li>
+                        <li class="list-group-item">Chicken Thali <span class="float-end">₹90</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- BEST IN VEG -->
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="badge bg-success mb-3">BEST IN VEG</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Chilli Kobi <span class="float-end">₹50</span></li>
+                        <li class="list-group-item">Chilli Paneer <span class="float-end">₹80</span></li>
+                        <li class="list-group-item">Chilli Mushroom <span class="float-end">₹80</span></li>
+                        <li class="list-group-item">Paneer Masala <span class="float-end">₹70</span></li>
+                        <li class="list-group-item">Paneer Butter Masala <span class="float-end">₹80</span></li>
+                        <li class="list-group-item">Mushroom Masala <span class="float-end">₹70</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROTI & PARATHA -->
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="badge bg-warning text-dark mb-3">ROTI & PARATHA</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Roti <span class="float-end">₹5</span></li>
+                        <li class="list-group-item">Paratha <span class="float-end">₹10</span></li>
+                        <li class="list-group-item">Aloo Paratha <span class="float-end">₹20</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- BEST IN NON-VEG -->
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="badge bg-dark mb-3">BEST IN NON-VEG</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Chicken Masala (4 pcs) <span class="float-end">₹60</span></li>
+                        <li class="list-group-item">Chicken Kasha (4 pcs) <span class="float-end">₹60</span></li>
+                        <li class="list-group-item">Chilli Chicken (4 / 8 pcs) <span class="float-end">₹80 / ₹150</span></li>
+                        <li class="list-group-item">Chicken Pokoda (5 / 10 pcs) <span class="float-end">₹60 / ₹120</span></li>
+                        <li class="list-group-item">Fish Masala <span class="float-end">₹40</span></li>
+                        <li class="list-group-item">Egg Masala (2 pcs) <span class="float-end">₹40</span></li>
+                        <li class="list-group-item">Egg Chilli (2 pcs) <span class="float-end">₹60</span></li>
+                        <li class="list-group-item">Egg Bhuj Curry <span class="float-end">₹50</span></li>
+                        <li class="list-group-item">Egg Tadka (Single / Double) <span class="float-end">₹40 / ₹50</span></li>
+                        <li class="list-group-item">Egg Omelet <span class="float-end">₹30</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- DRINKS -->
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="badge bg-info text-dark mb-3">SOFT DRINKS & SALAD</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Mineral Water <span class="float-end">MRP</span></li>
+                        <li class="list-group-item">Cool Drinks <span class="float-end">MRP</span></li>
+                        <li class="list-group-item">Masala Cool Drinks <span class="float-end">₹30</span></li>
+                        <li class="list-group-item">Fresh Lime Water <span class="float-end">₹10</span></li>
+                        <li class="list-group-item">Green Salad <span class="float-end">₹30</span></li>
+                        <li class="list-group-item">Papad <span class="float-end">₹10</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+ 
+    </div>
+    <footer>
+            <h4>
+            Location: 
+                <a href="https://www.google.com/maps/place/Brainseed+Library/@20.2810268,85.8148566,17z/data=!3m1!4b1!4m6!3m5!1s0x3a1909237c03de45:0xf50e2724dd0bfce8!8m2!3d20.2810268!4d85.8148566!16s%2Fg%2F11fn1w64l5?entry=ttu&g_ep=EgoyMDI2MDEwNC4wIKXMDSoASAFQAw%3D%3D" 
+                class="btn btn-primary text-white" target="_blank">
+                Click Here
+                </a>
+            </h4>
+            <h4>
+            Contact us on WhatsApp: 
+                <a href="https://chat.whatsapp.com/BizBHbbiUT4DSl2Asl0ckj" 
+                    class="btn btn-success text-white" target="_blank">
+                    WhatsApp Groups
+                </a>
+            </h4>
+
+
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
+
+
