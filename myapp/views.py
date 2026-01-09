@@ -3,7 +3,7 @@ from myapp.models import Customer
 from django.http import HttpResponse
 
 def home(request):
-    return render(request,'Home.html')
+    return render(request,'home.html')
 def create_data(request):
     if request.method == 'POST':
         customers = Customer.objects.create(
