@@ -1,46 +1,42 @@
-from django.shortcuts import render
-from myapp.models import Customer
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from myapp.models import Customer, MealRecord
 
-def home(request):
-    return render(request,'home.html')
+
 def create_data(request):
     if request.method == 'POST':
-        customers = Customer.objects.create(
-        name = request.POST.get('name'),
-        advance = request.POST.get('advance'),
-        location = request.POST.get('location'),
-        date = request.POST.get('date'),
-        lunch = request.POST.get('lunch'),
-        dinner = request.POST.get('dinner'),
-        extra_meals = request.POST.get('extra_meals'),
+        customer = Customer.objects.create(
+            name=request.POST.get('name'),
+            location=request.POST.get('location')
         )
-        return render(request,'home.html')
-    return render (request,'create.html')
 
+        MealRecord.objects.create(
+            customer=customer,
+            date=request.POST.get('date'),
+            lunch=bool(request.POST.get('lunch')),
+            dinner=bool(request.POST.get('dinner')),
+            extra_meals=request.POST.get('extra_meals')
+        )
 
+        return redirect('show')
+
+    return render(request, 'create.html')
 def show_data(request):
-    User = Customer.objects.all()
+    meals = MealRecord.objects.select_related('customer')
+    return render(request, 'show.html', {'meals': meals})
 
-    return render(request,'show.html',{'Users':User})
+def update_data(request, id):
+    meal = MealRecord.objects.get(id=id)
 
-def Update_data(request,id):
-    Customers = Customer.objects.get(id=id)
-    if request.method =='POST':
-            Customers.name = request.POST.get('name')
-            Customers.advance = request.POST.get('advance')
-            Customers.location = request.POST.get('location')
-            Customers.date = request.POST.get('date')
-            Customers.lunch = request.POST.get('lunch')
-            Customers.dinner = request.POST.get('dinner')
-            Customers.extra_meals = request.POST.get('extra_meals')
-            Customers.save()
-            return HttpResponse('Updated !!!! ')
-    return render(request,'update.html',{'Users':Customers})
+    if request.method == 'POST':
+        meal.lunch = bool(request.POST.get('lunch'))
+        meal.dinner = bool(request.POST.get('dinner'))
+        meal.extra_meals = request.POST.get('extra_meals')
+        meal.save()
+        return redirect('show')
 
-def Delete_data(request,id):
-    Customer.objects.filter(id=id).delete()
-    return HttpResponse("Data Have Deleted !")
-
-
-
+    return render(request, 'update.html', {'meal': meal})
+def delete_data(request, id):
+    MealRecord.objects.filter(id=id).delete()
+    return redirect('show')
+def home(request):
+    return render(request,'home.html')

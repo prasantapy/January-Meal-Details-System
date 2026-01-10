@@ -1,0 +1,36 @@
+{% extends 'adminpanel/base_admin.html' %}
+
+{% block title %}Add Meal{% endblock %}
+
+{% block content %}
+<h3 class="text-center mb-4">Add Meal Record</h3>
+
+<form method="post" class="mx-auto" style="max-width: 500px;">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label>Name</label>
+        <input type="text" name="customer_name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Location</label>
+        <input type="text" name="location" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Date</label>
+        <input type="date" name="date" class="form-control" required>
+    </div>
+    <div class="form-check mb-3">
+        <input type="checkbox" name="lunch" class="form-check-input">
+        <label class="form-check-label">Lunch</label>
+    </div>
+    <div class="form-check mb-3">
+        <input type="checkbox" name="dinner" class="form-check-input">
+        <label class="form-check-label">Dinner</label>
+    </div>
+    <div class="mb-3">
+        <label>Extra Meals</label>
+        <input type="text" name="extra_meals" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success w-100">Add Meal</button>
+</form>
+{% endblock %}

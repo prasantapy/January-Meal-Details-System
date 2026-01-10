@@ -1,0 +1,75 @@
+{% extends 'customer/base_customer.html' %}
+
+{% block title %}My Meals{% endblock %}
+
+{% block content %}
+<h3 class="text-center mb-4">My Meal Records</h3>
+
+<!-- Search by Date -->
+<form method="get" class="row g-3 mb-4 justify-content-center">
+    <div class="col-auto">
+        <input type="date" name="date" class="form-control" value="{{ query_date }}">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a href="{% url 'my_meals' %}" class="btn btn-secondary">Reset</a>
+    </div>
+</form>
+
+<!-- Meals Table -->
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Date</th>
+                <th>Lunch</th>
+                <th>Dinner</th>
+                <th>Extra Meals</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for meal in meals %}
+            <tr>
+                <td>{{ meal.date }}</td>
+                <td>
+                    {% if meal.lunch %}
+                        <span class="badge bg-success">Yes</span>
+                    {% else %}
+                        <span class="badge bg-secondary">No</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if meal.dinner %}
+                        <span class="badge bg-success">Yes</span>
+                    {% else %}
+                        <span class="badge bg-secondary">No</span>
+                    {% endif %}
+                </td>
+                <td>{{ meal.extra_meals|default:"-" }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">No meal records found.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Summary -->
+<div class="row mt-3 justify-content-center">
+    <div class="col-md-6">
+        <div class="card text-center">
+            <div class="card-header">
+                Meal Summary
+            </div>
+            <div class="card-body">
+                <p class="card-text">Total Lunches: <strong>{{ total_lunch }}</strong></p>
+                <p class="card-text">Total Dinners: <strong>{{ total_dinner }}</strong></p>
+                <p class="card-text">Total Extra Meals: <strong>{{ total_extra }}</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

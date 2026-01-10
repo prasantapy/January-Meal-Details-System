@@ -1,12 +1,24 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 
 class Customer(models.Model):
     name = models.CharField(max_length=40)
-    advance = models.CharField(max_length=40,null= True)
-    location = models.TextField(null = True)
-    date = models.DateField(null=True, blank=True)
-    lunch = models.CharField(max_length=10,null = True)
-    dinner = models.CharField(max_length=10,null= True)
-    extra_meals = models.TextField(null= True)
-    
+    location = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+class MealRecord(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    date = models.DateField()
+    lunch = models.BooleanField(default=False)
+    dinner = models.BooleanField(default=False)
+    extra_meals = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.customer.name} - {self.date}"
+class Payment(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=8, decimal_places=2)
+    date = models.DateField(auto_now_add=True)

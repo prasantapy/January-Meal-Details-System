@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+    'rest_framework',
+    'adminpanel',
+    'customer',
+    'meals',
+
 ]
 
 MIDDLEWARE = [
@@ -103,6 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+LOGIN_URL = 'admin_login'
+LOGIN_REDIRECT_URL = 'admin_meals'
+LOGOUT_REDIRECT_URL = 'admin_login'
 
 
 # Internationalization

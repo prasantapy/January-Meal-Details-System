@@ -1,0 +1,40 @@
+{% extends 'adminpanel/base_admin.html' %}
+
+{% block title %}Update Meal{% endblock %}
+
+{% block content %}
+<h3 class="text-center mb-4">Update Meal Record</h3>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Date</label>
+                <input type="date" name="date" class="form-control" value="{{ meal.date }}">
+            </div>
+
+            <div class="form-check mb-3">
+                <input type="checkbox" name="lunch" class="form-check-input"
+                    {% if meal.lunch %}checked{% endif %}>
+                <label class="form-check-label">Lunch</label>
+            </div>
+
+            <div class="form-check mb-3">
+                <input type="checkbox" name="dinner" class="form-check-input"
+                    {% if meal.dinner %}checked{% endif %}>
+                <label class="form-check-label">Dinner</label>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Extra Meals</label>
+                <input type="text" name="extra_meals" class="form-control"
+                    value="{{ meal.extra_meals }}">
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Update</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
