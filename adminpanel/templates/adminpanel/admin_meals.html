@@ -12,6 +12,31 @@
         <i class="fa-solid fa-plus"></i> Add Meal
     </a>
 </div>
+<h4 class="mb-3">Search Meal Records</h4>
+
+<form method="get" class="row g-3 mb-4">
+    <div class="col-md-4">
+        <input type="text" name="name" class="form-control"
+               placeholder="Customer name"
+               value="{{ request.GET.name }}">
+    </div>
+
+    <div class="col-md-3">
+        <input type="date" name="start_date" class="form-control"
+               value="{{ request.GET.start_date }}">
+    </div>
+
+    <div class="col-md-3">
+        <input type="date" name="end_date" class="form-control"
+               value="{{ request.GET.end_date }}">
+    </div>
+
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">
+            Search
+        </button>
+    </div>
+</form>
 
 <div class="table-responsive">
     <table class="table table-bordered table-striped table-hover text-center">

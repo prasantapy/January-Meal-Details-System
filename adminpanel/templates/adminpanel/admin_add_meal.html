@@ -5,32 +5,54 @@
 {% block content %}
 <h3 class="text-center mb-4">Add Meal Record</h3>
 
-<form method="post" class="mx-auto" style="max-width: 500px;">
+<form method="post">
     {% csrf_token %}
-    <div class="mb-3">
-        <label>Name</label>
-        <input type="text" name="customer_name" class="form-control" required>
-    </div>
-    <div class="mb-3">
-        <label>Location</label>
-        <input type="text" name="location" class="form-control">
-    </div>
+
     <div class="mb-3">
         <label>Date</label>
         <input type="date" name="date" class="form-control" required>
     </div>
+
     <div class="form-check mb-3">
         <input type="checkbox" name="lunch" class="form-check-input">
         <label class="form-check-label">Lunch</label>
     </div>
+
     <div class="form-check mb-3">
         <input type="checkbox" name="dinner" class="form-check-input">
         <label class="form-check-label">Dinner</label>
     </div>
+
     <div class="mb-3">
         <label>Extra Meals</label>
-        <input type="text" name="extra_meals" class="form-control">
+        <input type="text" name="extra_meals" class="form-control" placeholder="Optional">
     </div>
-    <button type="submit" class="btn btn-success w-100">Add Meal</button>
+
+    <h5>Select Customers</h5>
+    <div class="mb-3">
+        <input type="checkbox" id="select_all"> <label for="select_all">Select All</label>
+    </div>
+
+    <div class="mb-3">
+        {% for customer in customers %}
+            <div class="form-check">
+                <input type="checkbox" name="customers" value="{{ customer.id }}" class="form-check-input customer-checkbox" id="c{{ customer.id }}">
+                <label for="c{{ customer.id }}" class="form-check-label">{{ customer.name }}</label>
+            </div>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Add Meals</button>
 </form>
+
+<script>
+    // Select all toggle
+    const selectAll = document.getElementById('select_all');
+    const checkboxes = document.querySelectorAll('.customer-checkbox');
+
+    selectAll.addEventListener('change', function() {
+        checkboxes.forEach(cb => cb.checked = selectAll.checked);
+    });
+</script>
+
 {% endblock %}
